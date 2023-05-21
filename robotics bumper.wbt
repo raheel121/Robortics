@@ -1,0 +1,237 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/balls/protos/FifaSoccerBall.proto"
+
+WorldInfo {
+  info [
+    "Example use of a Bumper TouchSensor device."
+  ]
+  title "Bumper"
+}
+Viewpoint {
+  orientation -0.29859426523243393 -0.16008167519750935 0.9408588215222633 3.794004628988193
+  position 2.030795792242329 1.015938302619676 1.5326991271764998
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 1.5 1.5
+}
+WoodenBox {
+  hidden linearVelocity_0 -1.0977780099567608e-16 -7.259439761923476e-18 -4.415420698308708e-17
+  hidden angularVelocity_0 -8.718715767488824e-16 -5.013659508426381e-15 7.98567722420185e-16
+  translation 0.059610636350141674 -0.34668757221271096 0.02460760000000001
+  rotation -7.961588873827305e-13 -3.1951279511291677e-12 1 3.6624963632888735e-05
+  name "wooden box(3)"
+  size 0.05 0.05 0.05
+  mass 1
+}
+WoodenBox {
+  hidden linearVelocity_0 -1.5088828295792352e-17 3.6318803860563734e-17 -4.000396065492804e-17
+  hidden angularVelocity_0 -1.0658137918566914e-15 -1.5987209182842061e-15 1.3275844436690525e-18
+  translation -0.3096830046094089 0.17331299391035504 0.024607600000000014
+  rotation 5.866855639534619e-11 1.841489810653086e-10 -1 5.880271288787544e-07
+  name "wooden box(1)"
+  size 0.05 0.05 0.05
+  mass 1
+}
+WoodenBox {
+  hidden linearVelocity_0 -3.129935185619337e-17 7.549152946764509e-17 4.48198679349873e-17
+  hidden angularVelocity_0 -2.1316282438820135e-15 -1.5987212342399416e-15 -1.6362667518183053e-16
+  translation 0.39031699539059106 0.17331299391035507 0.024607599999999993
+  rotation 1.166495433774323e-10 1.0128488779362456e-11 -1 5.880271281239449e-07
+  name "wooden box(2)"
+  size 0.05 0.05 0.05
+  mass 1
+}
+DEF Robot Robot {
+  translation -0.06990342927455584 -0.2365125148715825 -0.00022666025883812807
+  rotation -0.014418048716939209 -0.00509445568039969 0.9998830763606895 -2.4623540739466585
+  children [
+    Transform {
+      translation 0 0 0.0415
+      rotation 0 0 1 1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry DEF BODY Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 582.1504318228908
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+          consumptionFactor 70
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.04499999999999985 0.025
+        rotation -0.6857474405257455 0.6857469700551242 0.24392937681346524 3.6201062437810183
+        children [
+          DEF WHEEL Transform {
+            rotation 0.577656895078166 0.5771968951617173 -0.5771968951617173 -2.093935
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject USE WHEEL
+        physics DEF PHYSICS_WHEEL Physics {
+          density -1
+          mass 0.05
+        }
+        linearVelocity -0.07780014077715512 -0.06282539242294524 -7.437692540279388e-08
+        angularVelocity 2.513030161356688 -3.1120180188221243 -2.5898289106541197e-07
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3223.877580324349
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+          consumptionFactor 70
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.04499999999999988 0.025
+        rotation 0.3356112018570905 -0.3356111769654581 0.8801876272045065 4.585113727943049
+        children [
+          USE WHEEL
+        ]
+        name "right wheel"
+        boundingObject USE WHEEL
+        physics USE PHYSICS_WHEEL
+        linearVelocity -0.07779995326801617 -0.06282533684753978 -2.681513431317488e-08
+        angularVelocity 2.5130307121263016 -3.1120175625331634 -1.3463958608047312e-06
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/samples/devices/worlds/textures/mybot.png"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+      }
+      geometry IndexedFaceSet {
+        coord Coordinate {
+          point [
+            0.015 0.038 -0.041
+            0.015 0.023 -0.041
+            0 0.023 -0.0455
+            -0.015 0.023 -0.041
+            -0.015 0.038 -0.041
+            0 0.038 -0.0455
+          ]
+        }
+        texCoord TextureCoordinate {
+          point [
+            0 0
+            0.5 0
+            1 0
+            1 1
+            0.5 1
+            0 1
+          ]
+        }
+        coordIndex [
+          0, 1, 2, 5, -1, 5, 2, 3, 4, -1
+        ]
+        texCoordIndex [
+          5, 0, 1, 4, -1, 4, 1, 2, 3, -1
+        ]
+        creaseAngle 0.9
+      }
+    }
+    TouchSensor {
+      translation 0.04686743707234345 -2.994717864324148e-05 0.019961876207556985
+      rotation 0.999999999999999 -6.818674099350567e-09 -4.668404204898996e-08 -3.141592303793387
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 0.6980390000000001
+            metalness 0
+          }
+          geometry DEF BUMPER Box {
+            size 0.02 0.09 0.02
+          }
+        }
+      ]
+      name "bumper"
+      boundingObject USE BUMPER
+      physics Physics {
+        density -1
+        mass 0.01
+      }
+      lookupTable [
+        0 0 0
+        0.01 1 0
+      ]
+      linearVelocity -0.07780012262486537 -0.06282530553786109 8.201651909032699e-08
+      angularVelocity -1.3798172394513109e-06 2.5931203223341897e-06 -1.9255398596409637e-06
+    }
+    Camera {
+      translation 0.04 0 0.07
+      fieldOfView 1.5
+      width 250
+      height 200
+      recognition Recognition {
+      }
+    }
+  ]
+  name "Robot"
+  boundingObject Transform {
+    translation 0 0 0.0415
+    rotation 0 0 1 1.570796
+    children [
+      USE BODY
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 0.5
+  }
+  controller "Camera_recogn"
+  linearVelocity -0.07780000741582221 -0.06282534325502248 -5.13343136439611e-08
+  angularVelocity -1.37981724636948e-06 2.5931203261623945e-06 -1.925539858928582e-06
+}
+FifaSoccerBall {
+  translation -0.6127 -0.609167 0.11182517537222593
+}
